@@ -1,32 +1,35 @@
 const phoneWidth = 338.46154785;
 const phoneHeight = 720;
-let mobileViewportWidth = window.innerWidth;
-let mobileViewportHeight = window.innerHeight;
+const visibleFrame = () => {
+  const vv = window.visualViewport;
+  if (!vv) return { width: window.innerWidth, height: window.innerHeight, top: 0, left: 0 };
+  return { width: vv.width, height: vv.height, top: vv.offsetTop, left: vv.offsetLeft };
+};
 const resizePhone = () => {
   const mobile = window.matchMedia('(max-width: 600px)').matches;
-  if (mobile && Math.abs(window.innerWidth - mobileViewportWidth) > 48) {
-    mobileViewportWidth = window.innerWidth;
-    mobileViewportHeight = window.innerHeight;
-  }
-  const availableWidth = mobile ? window.innerWidth : window.innerWidth - 32;
-  const availableHeight = mobile ? mobileViewportHeight : window.innerHeight - 48;
+  const frame = visibleFrame();
+  const availableWidth = mobile ? frame.width : window.innerWidth - 32;
+  const availableHeight = mobile ? frame.height : window.innerHeight - 48;
   const widthScale = availableWidth / phoneWidth;
   const heightScale = availableHeight / phoneHeight;
   const scale = mobile
     ? Math.max(widthScale, heightScale)
     : Math.min(1.1375, widthScale, heightScale);
-  document.documentElement.dataset.mobileApp = String(mobile);
-  document.documentElement.style.setProperty('--phone-scale', Math.max(0.1, scale));
+  const root = document.documentElement;
+  root.dataset.mobileApp = String(mobile);
+  root.style.setProperty('--phone-scale', String(Math.max(0.1, scale)));
+  if (mobile) {
+    root.style.setProperty('--vv-top', `${frame.top}px`);
+    root.style.setProperty('--vv-left', `${frame.left}px`);
+    root.style.setProperty('--vv-width', `${frame.width}px`);
+    root.style.setProperty('--vv-height', `${frame.height}px`);
+  }
 };
 resizePhone();
 window.addEventListener('resize', resizePhone);
-window.addEventListener('orientationchange', () => {
-  setTimeout(() => {
-    mobileViewportWidth = window.innerWidth;
-    mobileViewportHeight = window.innerHeight;
-    resizePhone();
-  }, 120);
-});
+window.addEventListener('orientationchange', () => setTimeout(resizePhone, 120));
+window.visualViewport?.addEventListener('resize', resizePhone);
+window.visualViewport?.addEventListener('scroll', resizePhone);
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
 }
