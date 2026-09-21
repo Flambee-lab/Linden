@@ -10,8 +10,11 @@ const resizePhone = () => {
   }
   const availableWidth = mobile ? window.innerWidth : window.innerWidth - 32;
   const availableHeight = mobile ? mobileViewportHeight : window.innerHeight - 48;
-  const maxScale = mobile ? Number.POSITIVE_INFINITY : 1.1375;
-  const scale = Math.min(maxScale, availableWidth / phoneWidth, availableHeight / phoneHeight);
+  const widthScale = availableWidth / phoneWidth;
+  const heightScale = availableHeight / phoneHeight;
+  const scale = mobile
+    ? Math.max(widthScale, heightScale)
+    : Math.min(1.1375, widthScale, heightScale);
   document.documentElement.dataset.mobileApp = String(mobile);
   document.documentElement.style.setProperty('--phone-scale', Math.max(0.1, scale));
 };
