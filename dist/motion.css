@@ -33,6 +33,9 @@ button:active{scale:.94}
 .login.is-activating .loop-base{animation:login-loop-draw .68s cubic-bezier(.3,0,.15,1) forwards}
 .login.is-activating .loop-comet{animation:login-loop-comet .68s cubic-bezier(.3,0,.15,1) forwards}
 .symbol{animation:symbol-breathe 5s ease-in-out infinite}
+.symbol.is-outro{animation:none}
+.orb-flight{position:absolute;z-index:25;left:-2.7px;top:39px;width:98px;height:109px;pointer-events:none;overflow:visible;transform-origin:50% 45%}
+.feed-avatar-button.is-arriving{visibility:hidden}
 .avatar-open{left:65px;top:215px;width:208px;height:216px;inset:auto;left:65px;top:215px;perspective:600px;border-radius:50%;touch-action:none}
 .avatar-open .avatar{left:6.177788px;top:12.232758px;transform-origin:50% 53%;animation:idle 5.4s ease-in-out infinite;filter:drop-shadow(0 0 0 #6acd8300);transition:filter .5s}
 .avatar-open::after{content:"";position:absolute;inset:20px;border:1px solid #77a68b00;border-radius:50%;pointer-events:none}
@@ -54,6 +57,7 @@ button:active{scale:.94}
 .phone[data-voice="listening"] .bar-coral,.phone[data-voice="speaking"] .bar-coral{animation:bar-flow 2s ease-in-out infinite alternate}
 .phone[data-voice="listening"] .bar-yellow,.phone[data-voice="speaking"] .bar-yellow{animation:bar-flow 1.7s ease-in-out infinite alternate-reverse}
 .feed-avatar-button img,.feed-avatar-button .avatar-orb-ring{animation:small-idle 6s ease-in-out infinite}
+.feed-avatar-button.is-arriving img,.feed-avatar-button.is-arriving .avatar-orb-ring{animation:none}
 .feed-avatar-button .avatar-orb{view-transition-name:linden-avatar}
 .assistant-screen:not([hidden]) .avatar{view-transition-name:linden-avatar}
 .feed-screen[hidden] .feed-avatar-button .avatar-orb{view-transition-name:none}

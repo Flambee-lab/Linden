@@ -71,6 +71,13 @@ const renderScreen = () => {
   const onboarding = location.hash === '#onboarding';
   iosHomeScreen.hidden = appOpened;
   document.querySelector('.login-screen').hidden = !appOpened || assistant || home || onboarding || conversation;
+  if (document.querySelector('.login-screen').hidden === false) {
+    const symbol = document.querySelector('.symbol');
+    symbol.classList.remove('is-outro');
+    symbol.getAnimations().forEach(animation => {
+      if (!(animation instanceof CSSAnimation)) animation.cancel();
+    });
+  }
   document.querySelector('.conversation-screen').hidden = !conversation;
   document.querySelector('.assistant-screen').hidden = !assistant;
   document.querySelector('.feed-screen').hidden = !home;
@@ -116,6 +123,25 @@ launchButtons.forEach(button => {
     if (reducedMotion) { location.hash = 'home'; return; }
     button.classList.add('is-activating');
     button.disabled = true;
+    const symbol = document.querySelector('.symbol');
+    setTimeout(() => {
+      symbol.classList.add('is-outro');
+      symbol.animate(
+        [{transform:'none'},{transform:'translateY(-6px) scale(.92)'}],
+        {duration:180,easing:'cubic-bezier(.22,1,.36,1)',fill:'forwards'}
+      );
+    }, 540);
+    setTimeout(() => {
+      const flight = document.createElement('div');
+      flight.className = 'orb-flight';
+      flight.setAttribute('aria-hidden', 'true');
+      flight.innerHTML = '<img class="avatar-orb-shadow" src="assets/avatar-shadow-orb.svg" alt=""><img class="avatar-orb" src="assets/avatar-glass.svg" alt=""><span class="avatar-orb-ring" aria-hidden="true"></span>';
+      flight.style.transformOrigin = '50% 45%';
+      flight.style.transform = 'translate(122.8px, 238px) scale(1.42)';
+      document.querySelector('.phone-stage').append(flight);
+      flight.animate([{opacity:0},{opacity:1}],{duration:80,easing:'linear',fill:'forwards'});
+      symbol.animate([{opacity:1},{opacity:0}],{duration:80,easing:'linear',fill:'forwards'});
+    }, 640);
     setTimeout(() => {
       location.hash = 'home';
       button.classList.remove('is-activating');
