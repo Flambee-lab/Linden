@@ -20,6 +20,7 @@ const resizePhone = () => {
     root.style.setProperty('--phone-scale', String(scale));
     root.style.setProperty('--phone-scale-x', String(scale));
     root.style.setProperty('--phone-scale-y', String(scale));
+    root.style.setProperty('--stage-crop', '0px');
     return;
   }
   const active = document.activeElement;
@@ -33,11 +34,13 @@ const resizePhone = () => {
   const layoutWidth = restWidth || frame.width;
   const layoutHeight = restHeight || frame.height;
   const scale = Math.max(0.1, layoutWidth / phoneWidth);
+  const crop = Math.max(0, phoneHeight - layoutHeight / scale);
   const top = keyboardOpen ? frame.top + frame.height - layoutHeight : frame.top;
   root.dataset.keyboard = String(keyboardOpen);
   root.style.setProperty('--phone-scale', String(scale));
   root.style.setProperty('--phone-scale-x', String(scale));
   root.style.setProperty('--phone-scale-y', String(scale));
+  root.style.setProperty('--stage-crop', `${crop}px`);
   root.style.setProperty('--vv-top', `${top}px`);
   root.style.setProperty('--vv-left', `${frame.left}px`);
   root.style.setProperty('--vv-width', `${layoutWidth}px`);

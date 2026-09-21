@@ -135,3 +135,4 @@ dialog::backdrop{animation:fade-in .25s ease-out}
 .card-motion-group img{pointer-events:none}
 .feed-avatar-button,.profile-button{z-index:7}
 @media(prefers-reduced-motion:reduce){.voice-aurora i{transform:none!important}.phone[data-voice="listening"] .voice-aurora{opacity:.55}.mic-meter span{transition:none}}
+@media(max-width:600px){.assistant-actions{top:calc(591px - var(--stage-crop,0px))}.toast{bottom:calc(105px + var(--stage-crop,0px))}.voice-panel{bottom:calc(84px + var(--stage-crop,0px))}.phone:has(.assistant-screen:not([hidden])) .voice-panel{bottom:calc(124px + var(--stage-crop,0px))}}
