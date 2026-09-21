@@ -15,6 +15,7 @@ class LindenVoice {
     this.stream?.getTracks().forEach(track=>track.stop());this.stream=null;
     const context=this.context;this.context=null;if(context)context.close().catch(()=>{});
     this.onLevel(0);this.setState('idle',message);
+    if(this.env.document?.documentElement)this.env.document.documentElement.dataset.micRequest='false';
   }
   detachRecognition(){
     const r=this.recognition;this.recognition=null;
@@ -26,6 +27,7 @@ class LindenVoice {
     const E=this.env;
     this.onText('',false);this.onSpeechStatus('');
     this.setState('requesting','Allow microphone access');
+    if (E.document?.documentElement) E.document.documentElement.dataset.micRequest = 'true';
     let resume;
     try{
       if(E.isSecureContext===false)throw Object.assign(new Error(),{name:'InsecureContext'});
@@ -36,10 +38,13 @@ class LindenVoice {
       const Audio=E.AudioContext||E.webkitAudioContext;
       // Start/resume synchronously in the tap's activation, before awaiting permission.
       if(Audio){this.context=new Audio();resume=this.context.resume().catch(()=>{});}
-      this.startRecognition(token);
+      const androidChrome=/Android/i.test(E.navigator?.userAgent||'')&&/Chrome|Chromium/i.test(E.navigator?.userAgent||'');
+      if(!androidChrome)this.startRecognition(token);
       const incoming=await E.navigator.mediaDevices.getUserMedia({audio:true});
+      if (E.document?.documentElement) E.document.documentElement.dataset.micRequest = 'false';
       if(token!==this.generation){incoming.getTracks().forEach(t=>t.stop());return;}
       this.stream=incoming;
+      if(androidChrome)this.startRecognition(token);
       const tracks=incoming.getAudioTracks();
       if(!tracks.length||tracks[0].readyState==='ended')throw Object.assign(new Error(),{name:'NotReadableError'});
       tracks.forEach(track=>{
@@ -69,7 +74,7 @@ class LindenVoice {
       this.later(()=>{if(token===this.generation)this.stop('Microphone off after 2 minutes · tap to continue');},120000);
     }catch(error){if(token===this.generation)this.fail(this.errorMessage(error));}
   }
-  fail(message){this.stop();this.setState('error',message);}
+  fail(message){if(this.env.document?.documentElement)this.env.document.documentElement.dataset.micRequest='false';this.stop();this.setState('error',message);}
   errorMessage(error){
     const messages={
       NotAllowedError:'Microphone permission is blocked. Allow it in this site’s browser settings, then tap Retry.',

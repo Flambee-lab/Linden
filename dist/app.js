@@ -18,20 +18,27 @@ const resizePhone = () => {
     root.dataset.keyboard = 'false';
     const scale = Math.max(0.1, Math.min(1.1375, (window.innerWidth - 32) / phoneWidth, (window.innerHeight - 48) / phoneHeight));
     root.style.setProperty('--phone-scale', String(scale));
+    root.style.setProperty('--phone-scale-x', String(scale));
+    root.style.setProperty('--phone-scale-y', String(scale));
     return;
   }
+  const active = document.activeElement;
+  const typing = Boolean(active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.isContentEditable));
   const widthChanged = Math.abs(frame.width - restWidth) > 48;
-  const keyboardOpen = restHeight > 0 && !widthChanged && restHeight - frame.height > 140;
+  const keyboardOpen = typing && restHeight > 0 && !widthChanged && restHeight - frame.height > 80;
   if (!keyboardOpen) {
     restWidth = frame.width;
     restHeight = frame.height;
   }
   const layoutWidth = restWidth || frame.width;
   const layoutHeight = restHeight || frame.height;
-  const scale = Math.max(0.1, layoutHeight / phoneHeight);
+  const scaleX = Math.max(0.1, layoutWidth / phoneWidth);
+  const scaleY = Math.max(0.1, layoutHeight / phoneHeight);
   const top = keyboardOpen ? frame.top + frame.height - layoutHeight : frame.top;
   root.dataset.keyboard = String(keyboardOpen);
-  root.style.setProperty('--phone-scale', String(scale));
+  root.style.setProperty('--phone-scale', String(scaleX));
+  root.style.setProperty('--phone-scale-x', String(scaleX));
+  root.style.setProperty('--phone-scale-y', String(scaleY));
   root.style.setProperty('--vv-top', `${top}px`);
   root.style.setProperty('--vv-left', `${frame.left}px`);
   root.style.setProperty('--vv-width', `${layoutWidth}px`);
@@ -46,6 +53,8 @@ window.addEventListener('orientationchange', () => {
 });
 window.visualViewport?.addEventListener('resize', resizePhone);
 window.visualViewport?.addEventListener('scroll', resizePhone);
+window.addEventListener('focusin', resizePhone);
+window.addEventListener('focusout', () => setTimeout(resizePhone, 50));
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
 }

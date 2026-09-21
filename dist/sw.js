@@ -1,4 +1,4 @@
-const CACHE_NAME = 'linden-mobile-v1';
+const CACHE_NAME = 'linden-mobile-v2';
 
 self.addEventListener('install', () => self.skipWaiting());
 
