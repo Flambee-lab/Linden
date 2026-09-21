@@ -32,3 +32,15 @@ Abrí este proyecto y subilo a https://github.com/Flambee-lab/Linden.git usando 
 ## Alcance
 
 El ZIP no contiene credenciales, configuración del alojamiento anterior ni historial Git. Publicar el código en GitHub y publicar una web accesible por URL son pasos distintos.
+
+## Publicar en Vercel
+
+El prototipo es HTML/CSS/JS estático en `dist/`. El `package.json` solo nombra el proyecto `linden` (Vercel exige minúsculas); no hay dependencias ni compile. `vercel.json` indica que se sirva `dist/` sin instalar paquetes ni detectar un framework.
+
+Al importar el repo, si los campos no se rellenan solos:
+
+- Project Name: `linden` (minúsculas; Vercel no acepta `Linden`)
+- Framework Preset: Other
+- Root Directory: `.` (la raíz del repo)
+- Build Command: vacío
+- Output Directory: `dist`

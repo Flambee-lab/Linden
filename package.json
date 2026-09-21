@@ -1,0 +1,5 @@
+{
+  "name": "linden",
+  "private": true,
+  "description": "Linden static prototype. Source lives in dist/; there is no compile step."
+}
