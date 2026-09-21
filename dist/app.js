@@ -13,11 +13,15 @@ const resizePhone = () => {
   const widthScale = availableWidth / phoneWidth;
   const heightScale = availableHeight / phoneHeight;
   const scale = mobile
-    ? Math.max(widthScale, heightScale)
+    ? Math.min(widthScale, heightScale)
     : Math.min(1.1375, widthScale, heightScale);
+  const scaleX = mobile ? Math.max(0.1, widthScale) : scale;
+  const scaleY = mobile ? Math.max(0.1, heightScale) : scale;
   const root = document.documentElement;
   root.dataset.mobileApp = String(mobile);
   root.style.setProperty('--phone-scale', String(Math.max(0.1, scale)));
+  root.style.setProperty('--phone-scale-x', String(scaleX));
+  root.style.setProperty('--phone-scale-y', String(scaleY));
   if (mobile) {
     root.style.setProperty('--vv-top', `${frame.top}px`);
     root.style.setProperty('--vv-left', `${frame.left}px`);

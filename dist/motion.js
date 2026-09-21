@@ -174,8 +174,8 @@
   avatar.style.transition='transform .35s cubic-bezier(.22,.8,.24,1)';
   document.querySelectorAll('button').forEach(button=>button.addEventListener('pointerdown',event=>{
     if(reduced.matches)return;
-    const r=phone.getBoundingClientRect(), scale=r.width/338.46154785;
-    const dot=document.createElement('i');dot.className='motion-ripple';dot.style.left=`${(event.clientX-r.left)/scale}px`;dot.style.top=`${(event.clientY-r.top)/scale}px`;
+    const r=phone.getBoundingClientRect(), scaleX=r.width/338.46154785, scaleY=r.height/720;
+    const dot=document.createElement('i');dot.className='motion-ripple';dot.style.left=`${(event.clientX-r.left)/scaleX}px`;dot.style.top=`${(event.clientY-r.top)/scaleY}px`;
     phone.append(dot);dot.addEventListener('animationend',()=>dot.remove(),{once:true});
   }));
   const specs=[

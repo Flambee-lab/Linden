@@ -294,13 +294,15 @@
     row.classList.add('has-shared-motion', `from-${role === 'user' ? 'composer' : 'avatar'}`);
     requestAnimationFrame(() => {
       const target = bubble.getBoundingClientRect();
-      const phoneScale = Math.max(.1, $('.phone').getBoundingClientRect().width / 338.46154785);
+      const phoneBox = $('.phone').getBoundingClientRect();
+      const scaleX = Math.max(.1, phoneBox.width / 338.46154785);
+      const scaleY = Math.max(.1, phoneBox.height / 720);
       const sourceX = origin.left + origin.width * (role === 'user' ? .72 : .5);
       const sourceY = origin.top + origin.height * .5;
       const targetX = target.left + target.width * (role === 'user' ? .72 : .22);
       const targetY = target.top + target.height * .5;
-      const dx = (sourceX - targetX) / phoneScale;
-      const dy = (sourceY - targetY) / phoneScale;
+      const dx = (sourceX - targetX) / scaleX;
+      const dy = (sourceY - targetY) / scaleY;
       const animation = bubble.animate([
         {opacity:.16, transform:`translate3d(${dx}px,${dy}px,0) scale(${role === 'user' ? '.68,.52' : '.16'})`, filter:'blur(5px)', borderRadius:'29px'},
         {opacity:.78, offset:.58, transform:`translate3d(${dx * .16}px,${dy * .12}px,0) scale(.94)`, filter:'blur(.8px)'},
@@ -507,7 +509,7 @@
     screen.dataset.live = 'true';
     livePanel.setAttribute('aria-hidden', 'false');
     scheduleLiveTurn();
-    requestAnimationFrame(() => startCapture('live'));
+    startCapture('live');
   }
 
   function exitLive({keepDraft = true} = {}) {

@@ -29,8 +29,9 @@ class LindenVoice {
     let resume;
     try{
       if(E.isSecureContext===false)throw Object.assign(new Error(),{name:'InsecureContext'});
+      const inFrame=E.top!=null&&E.top!==E;
       const policy=E.document?.permissionsPolicy||E.document?.featurePolicy;
-      if(policy?.allowsFeature && !policy.allowsFeature('microphone'))throw Object.assign(new Error(),{name:'FramePolicy'});
+      if(inFrame&&policy?.allowsFeature&&!policy.allowsFeature('microphone'))throw Object.assign(new Error(),{name:'FramePolicy'});
       if(!E.navigator.mediaDevices?.getUserMedia)throw Object.assign(new Error(),{name:'Unsupported'});
       const Audio=E.AudioContext||E.webkitAudioContext;
       // Start/resume synchronously in the tap's activation, before awaiting permission.
