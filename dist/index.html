@@ -13,14 +13,15 @@
   <link rel="icon" href="assets/symbol.svg" type="image/svg+xml">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="assets/symbol.svg">
-  <link rel="stylesheet" href="styles.css?v=45">
+  <link rel="stylesheet" href="styles.css?v=46">
   <link rel="stylesheet" href="motion.css?v=31">
-  <link rel="stylesheet" href="conversation.css?v=24">
+  <link rel="stylesheet" href="conversation.css?v=25">
 </head>
 <body>
   <main class="viewport" aria-label="Linden mobile app">
     <div class="phone-space">
       <section class="phone" aria-label="Welcome to Linden">
+        <div class="phone-stage">
         <section class="ios-home-screen" aria-label="Phone home screen">
           <div class="ios-wallpaper" aria-hidden="true"><i></i><i></i><i></i></div>
           <div class="ios-home-content">
@@ -291,10 +292,11 @@
           <textarea aria-label="Your message" placeholder="Write something…" rows="4"></textarea>
           <form method="dialog"><button class="dismiss">Send</button><button class="composer-cancel" value="cancel">Cancel</button></form>
         </dialog>
+        </div>
       </section>
     </div>
   </main>
-  <script src="app.js?v=38"></script>
+  <script src="app.js?v=39"></script>
   <script src="voice.js?v=9"></script>
   <script src="motion.js?v=27"></script>
   <script src="dictation.js?v=11"></script>

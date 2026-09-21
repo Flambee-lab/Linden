@@ -28,7 +28,7 @@ const resizePhone = () => {
   }
   const layoutWidth = restWidth || frame.width;
   const layoutHeight = restHeight || frame.height;
-  const scale = Math.max(0.1, Math.min(layoutWidth / phoneWidth, layoutHeight / phoneHeight));
+  const scale = Math.max(0.1, layoutHeight / phoneHeight);
   const top = keyboardOpen ? frame.top + frame.height - layoutHeight : frame.top;
   root.dataset.keyboard = String(keyboardOpen);
   root.style.setProperty('--phone-scale', String(scale));
