@@ -53,9 +53,10 @@ button:active{scale:.94}
 .bar-coral{filter:blur(7px);opacity:.5;scale:1.16 1.38}
 .phone[data-voice="listening"] .bar-coral,.phone[data-voice="speaking"] .bar-coral{animation:bar-flow 2s ease-in-out infinite alternate}
 .phone[data-voice="listening"] .bar-yellow,.phone[data-voice="speaking"] .bar-yellow{animation:bar-flow 1.7s ease-in-out infinite alternate-reverse}
-.feed-avatar-button img{animation:small-idle 6s ease-in-out infinite;view-transition-name:linden-avatar}
+.feed-avatar-button img,.feed-avatar-button .avatar-orb-ring{animation:small-idle 6s ease-in-out infinite}
+.feed-avatar-button .avatar-orb{view-transition-name:linden-avatar}
 .assistant-screen:not([hidden]) .avatar{view-transition-name:linden-avatar}
-.feed-screen[hidden] .feed-avatar-button img{view-transition-name:none}
+.feed-screen[hidden] .feed-avatar-button .avatar-orb{view-transition-name:none}
 .login-screen:not([hidden]) .symbol{view-transition-name:linden-avatar}
 .glass-card{transition:box-shadow .45s,filter .4s}
 .glass-card:hover{box-shadow:inset 1px 1px 1px #fff,inset -1px -1px 1px #fff,0 8px 24px #25412b13}
