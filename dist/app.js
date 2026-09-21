@@ -1,5 +1,7 @@
 const phoneWidth = 338.46154785;
 const phoneHeight = 720;
+let restWidth = 0;
+let restHeight = 0;
 const visibleFrame = () => {
   const vv = window.visualViewport;
   if (!vv) return { width: window.innerWidth, height: window.innerHeight, top: 0, left: 0 };
@@ -8,26 +10,40 @@ const visibleFrame = () => {
 const resizePhone = () => {
   const mobile = window.matchMedia('(max-width: 600px)').matches;
   const frame = visibleFrame();
-  const availableWidth = mobile ? frame.width : window.innerWidth - 32;
-  const availableHeight = mobile ? frame.height : window.innerHeight - 48;
-  const widthScale = availableWidth / phoneWidth;
-  const heightScale = availableHeight / phoneHeight;
-  const scale = Math.max(0.1, mobile
-    ? Math.min(widthScale, heightScale)
-    : Math.min(1.1375, widthScale, heightScale));
   const root = document.documentElement;
   root.dataset.mobileApp = String(mobile);
-  root.style.setProperty('--phone-scale', String(scale));
-  if (mobile) {
-    root.style.setProperty('--vv-top', `${frame.top}px`);
-    root.style.setProperty('--vv-left', `${frame.left}px`);
-    root.style.setProperty('--vv-width', `${frame.width}px`);
-    root.style.setProperty('--vv-height', `${frame.height}px`);
+  if (!mobile) {
+    restWidth = 0;
+    restHeight = 0;
+    root.dataset.keyboard = 'false';
+    const scale = Math.max(0.1, Math.min(1.1375, (window.innerWidth - 32) / phoneWidth, (window.innerHeight - 48) / phoneHeight));
+    root.style.setProperty('--phone-scale', String(scale));
+    return;
   }
+  const widthChanged = Math.abs(frame.width - restWidth) > 48;
+  const keyboardOpen = restHeight > 0 && !widthChanged && restHeight - frame.height > 140;
+  if (!keyboardOpen) {
+    restWidth = frame.width;
+    restHeight = frame.height;
+  }
+  const layoutWidth = restWidth || frame.width;
+  const layoutHeight = restHeight || frame.height;
+  const scale = Math.max(0.1, layoutWidth / phoneWidth);
+  const top = keyboardOpen ? frame.top + frame.height - layoutHeight : frame.top;
+  root.dataset.keyboard = String(keyboardOpen);
+  root.style.setProperty('--phone-scale', String(scale));
+  root.style.setProperty('--vv-top', `${top}px`);
+  root.style.setProperty('--vv-left', `${frame.left}px`);
+  root.style.setProperty('--vv-width', `${layoutWidth}px`);
+  root.style.setProperty('--vv-height', `${layoutHeight}px`);
 };
 resizePhone();
 window.addEventListener('resize', resizePhone);
-window.addEventListener('orientationchange', () => setTimeout(resizePhone, 120));
+window.addEventListener('orientationchange', () => {
+  restWidth = 0;
+  restHeight = 0;
+  setTimeout(resizePhone, 120);
+});
 window.visualViewport?.addEventListener('resize', resizePhone);
 window.visualViewport?.addEventListener('scroll', resizePhone);
 if ('serviceWorker' in navigator) {
