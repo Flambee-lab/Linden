@@ -1,0 +1,19 @@
+{
+  "name": "Linden",
+  "short_name": "Linden",
+  "description": "A quiet space for personal health tracking and supportive AI check-ins.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f8f6f5",
+  "theme_color": "#f6f5f4",
+  "icons": [
+    {
+      "src": "assets/symbol.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

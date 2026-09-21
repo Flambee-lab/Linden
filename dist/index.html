@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f4">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Linden">
+  <meta name="description" content="Linden is a quiet space for personal health tracking, reflection, and supportive AI check-ins.">
+  <title>Linden</title>
+  <link rel="icon" href="assets/symbol.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/symbol.svg">
+  <link rel="stylesheet" href="styles.css?v=35">
+  <link rel="stylesheet" href="motion.css?v=31">
+  <link rel="stylesheet" href="conversation.css?v=24">
+</head>
+<body>
+  <main class="viewport" aria-label="Linden mobile app">
+    <div class="phone-space">
+      <section class="phone" aria-label="Welcome to Linden">
+        <section class="ios-home-screen" aria-label="Phone home screen">
+          <div class="ios-wallpaper" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="ios-home-content">
+            <section class="ios-widget" aria-label="Today at a glance">
+              <span>MONDAY · SEP 21</span>
+              <strong>9:41</strong>
+              <p>A quiet morning.<br><b>18°</b> · Buenos Aires</p>
+            </section>
+            <div class="ios-app-grid" aria-label="Applications">
+              <button class="ios-app ios-linden-app" type="button" aria-label="Open Linden">
+                <span class="ios-app-icon linden-icon"><img src="assets/feed-avatar.svg" alt=""></span><small>Linden</small>
+              </button>
+              <button class="ios-app" type="button" aria-label="Photos"><span class="ios-app-icon photos-icon"><i></i></span><small>Photos</small></button>
+              <button class="ios-app" type="button" aria-label="Weather"><span class="ios-app-icon weather-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="11" r="6"/><path d="M8 24h16a5 5 0 0 0-1-9.9A8 8 0 0 0 8 16a4 4 0 0 0 0 8Z"/></svg></span><small>Weather</small></button>
+              <button class="ios-app" type="button" aria-label="Notes"><span class="ios-app-icon notes-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 11h16M8 16h16M8 21h11"/></svg></span><small>Notes</small></button>
+              <button class="ios-app" type="button" aria-label="Health"><span class="ios-app-icon health-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 25S6 19.2 6 12.4C6 8 11.5 6.8 16 11c4.5-4.2 10-3 10 1.4C26 19.2 16 25 16 25Z"/></svg></span><small>Health</small></button>
+              <button class="ios-app" type="button" aria-label="Calendar"><span class="ios-app-icon calendar-icon"><b>21</b></span><small>Calendar</small></button>
+              <button class="ios-app" type="button" aria-label="Music"><span class="ios-app-icon music-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M12 9v14a4 4 0 1 1-2-3.45V12l14-3v11a4 4 0 1 1-2-3.45V6Z"/></svg></span><small>Music</small></button>
+              <button class="ios-app" type="button" aria-label="Maps"><span class="ios-app-icon maps-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 27s8-7.3 8-14a8 8 0 1 0-16 0c0 6.7 8 14 8 14Z"/><circle cx="16" cy="13" r="3"/></svg></span><small>Maps</small></button>
+            </div>
+            <div class="ios-page-dots" aria-hidden="true"><i></i><i></i></div>
+            <div class="ios-dock" aria-label="Dock">
+              <span class="ios-app-icon phone-icon" aria-label="Phone"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M9 5 6 8c-1.6 1.6.2 6.8 5.4 12s10.4 7 12 5.4l3-3-5-4-2.7 2.2c-2.8-1.3-6-4.5-7.3-7.3L13 10Z"/></svg></span>
+              <span class="ios-app-icon message-icon" aria-label="Messages"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M27 15.5c0 6-5.1 10.5-11.5 10.5-1.7 0-3.3-.3-4.7-.9L5 27l1.9-5C5.7 20.2 5 18 5 15.5 5 9.7 10 5 16 5s11 4.7 11 10.5Z"/></svg></span>
+              <span class="ios-app-icon browser-icon" aria-label="Browser"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11"/><path d="m19 10-2 8-7 4 3-8Z"/></svg></span>
+              <span class="ios-app-icon camera-icon" aria-label="Camera"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 10h5l2-3h5l2 3h4a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V13a3 3 0 0 1 3-3Z"/><circle cx="16" cy="18" r="5"/></svg></span>
+            </div>
+          </div>
+        </section>
+        <div class="login-screen is-launching" hidden>
+        <div class="launch-sequence" aria-hidden="true">
+          <div class="launch-aura"></div>
+          <div class="launch-wordmark-wrap">
+            <img class="launch-wordmark-ghost" src="assets/wordmark.svg" alt="">
+            <span class="launch-wordmark-mask">
+              <img class="launch-wordmark" src="assets/wordmark.svg" alt="">
+              <i class="launch-glint"></i>
+            </span>
+          </div>
+        </div>
+        <div class="wallpaper-art" aria-hidden="true">
+          <img class="coral" src="assets/coral.svg" alt="">
+          <img class="darkgreen" src="assets/darkgreen.svg" alt="">
+          <img class="green" src="assets/green.svg" alt="">
+        </div>
+        <div class="wallpaper-glass" aria-hidden="true"></div>
+        <img class="wordmark" src="assets/wordmark.svg" alt="Linden">
+        <img class="symbol" src="assets/symbol.svg" alt="">
+        <button class="login google" type="button" aria-label="Continue with Google" data-provider="google">
+          <img class="google-icon" src="assets/google.svg" alt="">
+          <span class="google-label">Continue with Google</span>
+          <svg class="login-loop" viewBox="0 0 246 53" preserveAspectRatio="none" aria-hidden="true"><path class="loop-base" pathLength="1" d="M26.5 1.25H219.5C233.4 1.25 244.75 12.6 244.75 26.5S233.4 51.75 219.5 51.75H26.5C12.6 51.75 1.25 40.4 1.25 26.5S12.6 1.25 26.5 1.25Z"/><path class="loop-comet" pathLength="1" d="M26.5 1.25H219.5C233.4 1.25 244.75 12.6 244.75 26.5S233.4 51.75 219.5 51.75H26.5C12.6 51.75 1.25 40.4 1.25 26.5S12.6 1.25 26.5 1.25Z"/></svg>
+        </button>
+        <button class="login telephone" type="button" aria-label="Signup / Login with phone" data-provider="phone">
+          <img class="phone-label" src="assets/phone-label.svg" alt="">
+          <svg class="login-loop" viewBox="0 0 246 53" preserveAspectRatio="none" aria-hidden="true"><path class="loop-base" pathLength="1" d="M26.5 1.25H219.5C233.4 1.25 244.75 12.6 244.75 26.5S233.4 51.75 219.5 51.75H26.5C12.6 51.75 1.25 40.4 1.25 26.5S12.6 1.25 26.5 1.25Z"/><path class="loop-comet" pathLength="1" d="M26.5 1.25H219.5C233.4 1.25 244.75 12.6 244.75 26.5S233.4 51.75 219.5 51.75H26.5C12.6 51.75 1.25 40.4 1.25 26.5S12.6 1.25 26.5 1.25Z"/></svg>
+        </button>
+        </div>
+        <div class="assistant-screen" hidden aria-label="Linden assistant">
+          <div class="voice-aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+          <img class="avatar-shadow" src="assets/avatar-shadow.svg" alt="">
+          <button class="avatar-open" type="button" aria-label="Talk to Linden"><img class="avatar" src="assets/avatar.svg" alt="Linden avatar"></button>
+          <img class="assistant-wordmark" src="assets/assistant-wordmark.svg" alt="Linden">
+          <button class="top-control back-control" aria-label="Back to welcome" type="button"><img src="assets/back.svg" alt=""></button>
+          <div class="top-control utility-controls">
+            <button class="search-control" type="button" aria-label="Search"><img src="assets/search.svg" alt=""></button>
+            <button class="more-control" type="button" aria-label="More options"><img src="assets/more.svg" alt=""></button>
+          </div>
+          <div class="voice-caption" aria-live="polite"><span class="voice-status">Ready when you are</span><p class="voice-transcript"></p></div>
+          <div class="assistant-actions"><button class="demo-button" type="button">Try a check-in</button><button class="home-button" type="button">Explore home ↗</button></div>
+          <button class="stop-voice" type="button" hidden>Stop listening</button>
+          <button class="type-button" type="button" aria-label="Tap to type"><img src="assets/type-label.svg" alt=""></button>
+        </div>
+        <div class="feed-screen" hidden aria-label="Linden home">
+          <img class="feed-background" src="assets/feed-background.svg" alt="">
+          <div class="wallpaper-glass" aria-hidden="true"></div>
+          <div class="voice-aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="feed-top-scrim" aria-hidden="true"></div>
+          <button class="feed-avatar-button" type="button" aria-label="Talk to Linden"><img src="assets/feed-avatar.svg" alt="Linden"></button>
+          <button class="profile-button" type="button" aria-label="Profile"><img src="assets/profile.svg" alt=""></button>
+          <div class="feed-scroll" tabindex="0" aria-label="Home feed">
+          <div class="feed-content">
+          <article class="glass-card first-card" aria-label="Your weekly rhythm">
+            <div class="card-top"></div><div class="card-category"></div>
+          </article>
+          <img class="card-art" src="assets/card-art.svg" alt="">
+          <img class="category-icon" src="assets/image-icon.svg" alt="">
+          <button class="see-more hit" type="button" aria-label="View your weekly wellbeing insight"></button>
+          <img class="see-arrow" src="assets/arrow.svg" alt="">
+          <button class="card-more hit" type="button" aria-label="More card options"><img src="assets/more.svg" alt=""></button>
+          <article class="glass-card audio-card" aria-label="Audio card">
+            <div class="quote-surface"></div><div class="player-surface"></div>
+          </article>
+          <img class="audio-photo" src="assets/audio-photo.jpg" alt="Audio artwork">
+          <button class="audio-play hit" type="button" aria-label="Play audio"><img src="assets/audio-play.svg" alt=""></button>
+          <div class="waveform" aria-hidden="true"></div>
+          <button class="captions-button hit" type="button" aria-label="Audio transcript"><img src="assets/captions.svg" alt=""></button>
+          <article class="glass-card video-card" aria-label="Visual content card"><div class="video-dark"></div></article>
+          <img class="video-photo" src="assets/video-photo.jpg" alt="Sunlight on a plant">
+          <button class="video-play hit" type="button" aria-label="Open visual content"></button>
+          <button class="link-button hit" type="button" aria-label="Open related content"><img src="assets/link-icon.svg" alt=""></button>
+          <div class="feed-text-layer">
+<img src="assets/feed-text-0.svg?v=28" alt="Thu, Sep 18" style="left:24.6767578125px;top:153.2175750732422px;width:71px;height:13px">
+<img src="assets/feed-text-1.svg" alt="Good morning, Martin" style="left:26.3310546875px;top:173.07034301757812px;width:191px;height:53px">
+<img src="assets/feed-text-2.svg?v=28" alt="Care note: rest" style="left:102.435546875px;top:303.69012451171875px;width:96px;height:11px">
+<img src="assets/feed-text-3.svg?v=28" alt="Linden helps you notice patterns in sleep, energy, mood, and daily routines. Gentle check-ins turn small changes into a clearer view of your wellbeing, with calm support each day." style="left:102.12255859375px;top:323.19122314453125px;width:195px;height:25px">
+<img src="assets/feed-text-4.svg?v=28" alt="Health note." style="left:54.7958984375px;top:379.0901184082031px;width:84px;height:10px">
+<img src="assets/feed-text-5.svg?v=28" alt="See care" style="left:54.24169921875px;top:410.80718994140625px;width:53px;height:10px">
+<img src="assets/feed-text-6.svg?v=28" alt="A quiet pause helps you notice what your body needs, and return to yourself with care." style="left:45.3955078125px;top:460.12384033203125px;width:249px;height:34px">
+<img src="assets/feed-text-7.svg?v=28" alt="2:05" style="left:113.478515625px;top:541.0952758789062px;width:23px;height:10px">
+<img src="assets/feed-text-8.svg?v=28" alt="A calm night starts with quiet care now" style="left:178.130859375px;top:600.7479858398438px;width:81px;height:37px">
+<img src="assets/feed-text-9.svg?v=28" alt="Quiet habits help more restful sleep." style="left:178.4052734375px;top:672.3963623046875px;width:89px;height:25px">
+          </div>
+          </div>
+          </div>
+          <div class="listening-bar" aria-label="Voice interface preview">
+            <img class="bar-green" src="assets/glow-green.svg" alt="">
+            <img class="bar-coral" src="assets/glow-coral.svg" alt="">
+            <img class="bar-yellow" src="assets/glow-yellow.svg" alt="">
+            <button class="keyboard-button" type="button" aria-label="Type a message"><img src="assets/keyboard.svg" alt=""></button>
+            <button class="voice-toggle" type="button">Ask Linden</button>
+            <button class="add-button live-voice-button" type="button" aria-label="Open live voice"><span class="mini-equalizer" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>
+            <img class="bar-ring" src="assets/glow-ring.svg" alt="">
+          </div>
+        </div>
+        <div class="onboarding-screen" hidden aria-label="Set up Martin's profile" data-step="0">
+          <div class="onboarding-sheet"></div>
+          <div class="onboarding-progress" role="progressbar" aria-label="Profile setup progress" aria-valuemin="0" aria-valuemax="3" aria-valuenow="0"><span></span></div>
+          <button class="onboarding-close" type="button" aria-label="Back to home"><img src="assets/back.svg" alt=""></button>
+          <div class="onboarding-pages">
+            <section class="onboarding-page welcome-page" data-page="0">
+              <img class="onboarding-avatar" src="assets/onboard-avatar.svg" alt="Linden">
+              <p class="onboarding-eyebrow">Your sheltered space</p>
+              <h1 class="spoken-welcome" aria-label="Welcome, Martin"><span>Welcome,</span> <span>Martin.</span></h1>
+              <p>A quiet place to notice, understand, and care for your wellbeing.</p>
+            </section>
+            <section class="onboarding-page" data-page="1" hidden>
+              <p class="onboarding-eyebrow">Step 1 of 3</p>
+              <h1>A space made for you.</h1>
+              <p>This helps Linden make every check-in feel personal.</p>
+              <label class="profile-field"><span>Name</span><input type="text" value="Martin" aria-label="Name"></label>
+              <div class="profile-split">
+                <label class="profile-field"><span>Birth year</span><input type="text" value="1989" inputmode="numeric" aria-label="Birth year"></label>
+                <label class="profile-field"><span>Pronouns</span><select aria-label="Pronouns"><option>He / him</option><option>She / her</option><option>They / them</option></select></label>
+              </div>
+            </section>
+            <section class="onboarding-page" data-page="2" hidden>
+              <p class="onboarding-eyebrow">Step 2 of 3</p>
+              <h1>What matters to you?</h1>
+              <p>Choose what you’d like Linden to notice over time.</p>
+              <div class="focus-grid" role="group" aria-label="Health focus areas">
+                <button type="button" class="focus-chip is-selected" data-value="Sleep" aria-pressed="true"><i>◌</i>Sleep</button>
+                <button type="button" class="focus-chip is-selected" data-value="Stress" aria-pressed="true"><i>∿</i>Stress</button>
+                <button type="button" class="focus-chip" data-value="Heart" aria-pressed="false"><i>♡</i>Heart</button>
+                <button type="button" class="focus-chip is-selected" data-value="Energy" aria-pressed="true"><i>✦</i>Energy</button>
+                <button type="button" class="focus-chip" data-value="Medication" aria-pressed="false"><i>+</i>Medication</button>
+                <button type="button" class="focus-chip" data-value="Movement" aria-pressed="false"><i>○</i>Movement</button>
+              </div>
+              <p class="profile-note">You can change these anytime.</p>
+            </section>
+            <section class="onboarding-page" data-page="3" hidden>
+              <p class="onboarding-eyebrow">Step 3 of 3</p>
+              <h1>Create a steady rhythm.</h1>
+              <p>Gentle check-ins make small changes easier to see over time.</p>
+              <button class="routine-card is-selected" type="button" aria-pressed="true"><span><small>Daily check-in</small><strong>9:00 AM</strong></span><b>On</b></button>
+              <button class="routine-card" type="button" aria-pressed="false"><span><small>Weekly reflection</small><strong>Sunday evening</strong></span><b>Off</b></button>
+              <div class="privacy-note"><i>✓</i><span><strong>Your space stays yours.</strong><small>You choose what Linden remembers.</small></span></div>
+            </section>
+            <section class="onboarding-page profile-summary" data-page="4" hidden>
+              <div class="profile-hero">
+                <div class="profile-orbit"><img src="assets/profile.svg" alt=""></div>
+                <span>Profile ready</span><h1 class="profile-summary-name">Martin</h1><p>Buenos Aires · He / him</p>
+              </div>
+              <div class="profile-summary-grid">
+                <article><small>Tracking</small><strong class="profile-summary-focus-count">3 areas</strong><span class="profile-summary-focus-list">Sleep · Stress · Energy</span></article>
+                <article><small>Next check-in</small><strong class="profile-summary-checkin">Tomorrow</strong><span class="profile-summary-time">9:00 AM</span></article>
+              </div>
+              <button class="profile-row" type="button"><span><small>Voice companion</small><strong>Breeze</strong></span><b>›</b></button>
+              <button class="profile-row" type="button"><span><small>Privacy & memory</small><strong>You’re in control</strong></span><b>›</b></button>
+            </section>
+          </div>
+          <div class="onboarding-actions">
+            <button class="onboarding-cancel" type="button">Back</button>
+            <button class="onboarding-next" type="button"><span>Get started</span><b>→</b></button>
+          </div>
+        </div>
+        <section class="conversation-screen" hidden aria-label="Talk to Linden" data-phase="idle" data-chat="empty">
+          <div class="conversation-light" aria-hidden="true"><i></i><i></i><i></i></div>
+          <header class="conversation-header">
+            <button class="conversation-back" type="button" aria-label="Close chat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+            <img class="conversation-wordmark" src="assets/assistant-wordmark.svg" alt="Linden">
+          </header>
+          <img class="conversation-avatar" src="assets/onboard-avatar.svg" alt="">
+          <div class="conversation-copy">
+            <div class="conversation-empty">
+              <h1>Talk to Linden.</h1>
+              <p>Share what feels important to you today.</p>
+              <button class="voice-model-button" type="button"><span><small>Current voice</small><strong class="voice-model-name">Breeze</strong></span><b>Change</b></button>
+            </div>
+            <div class="conversation-messages" aria-label="Conversation with Linden" aria-live="polite"></div>
+          </div>
+          <p class="conversation-feedback" role="status"></p>
+          <a class="conversation-open-tab" href="https://linden-nudge-design.milexfx.chatgpt.site/#conversation" target="_blank" rel="noopener" hidden>Open in a browser tab ↗</a>
+          <button class="conversation-jump" type="button" aria-label="Jump to latest message" hidden>↓</button>
+          <div class="conversation-bar">
+            <img class="conversation-glow-green" src="assets/glow-green.svg" alt="">
+            <img class="conversation-glow-coral" src="assets/glow-coral.svg" alt="">
+            <img class="conversation-glow-yellow" src="assets/glow-yellow.svg" alt="">
+            <img class="conversation-glow-ring" src="assets/glow-ring.svg" alt="">
+            <textarea class="conversation-editor" aria-label="Message Linden" placeholder="Ask Linden" maxlength="4000" rows="1"></textarea>
+            <button class="conversation-mic" type="button" aria-label="Dictate message"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 14.5a3.5 3.5 0 0 0 3.5-3.5V6a3.5 3.5 0 1 0-7 0v5a3.5 3.5 0 0 0 3.5 3.5Z"/><path d="M5.5 10.5a6.5 6.5 0 0 0 13 0M12 17v3.5M8.5 20.5h7"/></svg></button>
+            <button class="conversation-live" type="button" aria-label="Open live voice"><span class="conversation-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></button>
+            <button class="conversation-send" type="button" aria-label="Send message" disabled><img src="assets/onboard-arrow.svg" alt=""></button>
+          </div>
+          <section class="live-voice" aria-label="Live voice" aria-hidden="true">
+            <div class="live-light" aria-hidden="true"><i></i><i></i><i></i></div>
+            <canvas class="live-particles" aria-hidden="true"></canvas>
+            <div class="live-wavefield" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+            <div class="live-presence" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="live-avatar-turn"><img class="live-avatar" src="assets/onboard-avatar.svg" alt="Linden"></div>
+            <div class="live-copy"><strong class="live-status">Ready when you are</strong><p class="live-transcript"></p></div>
+            <div class="live-controls">
+              <button class="live-cancel" type="button" aria-label="Cancel live voice">×</button>
+              <button class="live-mute" type="button" aria-label="Mute microphone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 14.5a3.5 3.5 0 0 0 3.5-3.5V6a3.5 3.5 0 1 0-7 0v5a3.5 3.5 0 0 0 3.5 3.5Z"/><path d="M5.5 10.5a6.5 6.5 0 0 0 13 0M12 17v3.5M8.5 20.5h7"/></svg></button>
+              <button class="live-end" type="button" aria-label="End live voice"><span></span></button>
+            </div>
+          </section>
+          <section class="voice-picker" role="dialog" aria-modal="true" aria-labelledby="voice-picker-title" hidden>
+            <button class="voice-picker-backdrop" type="button" aria-label="Close voice picker"></button>
+            <div class="voice-picker-sheet">
+              <header class="voice-picker-header">
+                <span><small>Linden voice</small><h2 id="voice-picker-title">Choose what feels right.</h2></span>
+                <button class="voice-picker-close" type="button" aria-label="Close voice picker">×</button>
+              </header>
+              <p class="voice-picker-intro">Listen first, then choose the voice you’d like Linden to use.</p>
+              <div class="voice-options" role="radiogroup" aria-label="Available Linden voices">
+                <button class="voice-option is-selected" type="button" role="radio" aria-checked="true" data-voice="0"><span class="voice-option-orb" aria-hidden="true"><i></i></span><span><strong>Breeze</strong><small>Clear and reassuring</small></span><b aria-hidden="true"></b></button>
+                <button class="voice-option" type="button" role="radio" aria-checked="false" data-voice="1"><span class="voice-option-orb" aria-hidden="true"><i></i></span><span><strong>Calm</strong><small>Slower and grounded</small></span><b aria-hidden="true"></b></button>
+                <button class="voice-option" type="button" role="radio" aria-checked="false" data-voice="2"><span class="voice-option-orb" aria-hidden="true"><i></i></span><span><strong>Warm</strong><small>Bright and encouraging</small></span><b aria-hidden="true"></b></button>
+              </div>
+              <p class="voice-preview-status" aria-live="polite">Breeze is selected.</p>
+              <div class="voice-picker-actions">
+                <button class="voice-preview-button" type="button"><i class="voice-play-icon" aria-hidden="true"></i><span>Preview</span></button>
+                <button class="voice-use-button" type="button">Use Breeze</button>
+              </div>
+            </div>
+          </section>
+        </section>
+        <section class="voice-panel" hidden aria-label="Microphone status">
+          <div class="voice-panel-heading"><span class="mic-indicator"></span><strong class="mic-status" role="status">Microphone off</strong><button class="voice-panel-close" aria-label="Stop microphone and close">×</button></div>
+          <div class="mic-meter" role="meter" aria-label="Microphone volume" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+          <p class="mic-message" aria-live="polite"></p><p class="mic-transcript" aria-live="polite"></p>
+          <div class="mic-actions"><button class="mic-retry" type="button">Retry</button><button class="mic-test" type="button">Test mic · 3s</button><button class="mic-resume" type="button" hidden>Resume audio</button><button class="mic-type" type="button">Type instead</button></div>
+          <a class="mic-open-tab" href="https://linden-nudge-design.milexfx.chatgpt.site/#assistant" target="_blank" rel="noopener" hidden>Open Linden in a browser tab ↗</a>
+          <audio class="mic-playback" controls hidden aria-label="Your microphone test"></audio>
+        </section>
+        <button class="sound-toggle" type="button" aria-pressed="true" aria-label="Mute interface sounds">♪</button>
+        <img class="island" src="assets/island.svg" alt="">
+        <img class="status" src="assets/status.svg" alt="9:41. Cellular, Wi-Fi and battery status.">
+        <div class="frame-border" aria-hidden="true"></div>
+        <dialog aria-labelledby="notice-title">
+          <h1 id="notice-title">Linden</h1>
+          <p>A quiet place to notice patterns and care for your wellbeing over time.</p>
+          <form method="dialog"><button class="dismiss">Close</button></form>
+        </dialog>
+        <dialog class="composer" aria-labelledby="composer-title">
+          <h1 id="composer-title">Type to Linden</h1>
+          <textarea aria-label="Your message" placeholder="Write something…" rows="4"></textarea>
+          <form method="dialog"><button class="dismiss">Send</button><button class="composer-cancel" value="cancel">Cancel</button></form>
+        </dialog>
+      </section>
+    </div>
+  </main>
+  <script src="app.js?v=31"></script>
+  <script src="voice.js?v=7"></script>
+  <script src="motion.js?v=26"></script>
+  <script src="dictation.js?v=11"></script>
+  <script src="conversation.js?v=25"></script>
+</body>
+</html>
