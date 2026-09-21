@@ -32,13 +32,12 @@ const resizePhone = () => {
   }
   const layoutWidth = restWidth || frame.width;
   const layoutHeight = restHeight || frame.height;
-  const scaleX = Math.max(0.1, layoutWidth / phoneWidth);
-  const scaleY = Math.max(0.1, layoutHeight / phoneHeight);
+  const scale = Math.max(0.1, layoutHeight / phoneHeight);
   const top = keyboardOpen ? frame.top + frame.height - layoutHeight : frame.top;
   root.dataset.keyboard = String(keyboardOpen);
-  root.style.setProperty('--phone-scale', String(scaleX));
-  root.style.setProperty('--phone-scale-x', String(scaleX));
-  root.style.setProperty('--phone-scale-y', String(scaleY));
+  root.style.setProperty('--phone-scale', String(scale));
+  root.style.setProperty('--phone-scale-x', String(scale));
+  root.style.setProperty('--phone-scale-y', String(scale));
   root.style.setProperty('--vv-top', `${top}px`);
   root.style.setProperty('--vv-left', `${frame.left}px`);
   root.style.setProperty('--vv-width', `${layoutWidth}px`);
