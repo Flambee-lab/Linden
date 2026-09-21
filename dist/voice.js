@@ -36,6 +36,7 @@ class LindenVoice {
       const Audio=E.AudioContext||E.webkitAudioContext;
       // Start/resume synchronously in the tap's activation, before awaiting permission.
       if(Audio){this.context=new Audio();resume=this.context.resume().catch(()=>{});}
+      this.startRecognition(token);
       const incoming=await E.navigator.mediaDevices.getUserMedia({audio:true});
       if(token!==this.generation){incoming.getTracks().forEach(t=>t.stop());return;}
       this.stream=incoming;
@@ -65,7 +66,6 @@ class LindenVoice {
         };tick();
         void resume;
       }else this.onSpeechStatus('Microphone is on. Live volume effects are unavailable in this browser.');
-      this.startRecognition(token);
       this.later(()=>{if(token===this.generation)this.stop('Microphone off after 2 minutes · tap to continue');},120000);
     }catch(error){if(token===this.generation)this.fail(this.errorMessage(error));}
   }
@@ -86,9 +86,10 @@ class LindenVoice {
     if(!Recognition){this.onSpeechStatus('Voice effects are live. This browser does not support transcription; you can type instead.');return;}
     let restarts=0;
     const launch=()=>{
-      if(token!==this.generation||this.state!=='listening'||this.transcriptionPaused)return;
+      if(token!==this.generation||this.transcriptionPaused)return;
+      if(this.state==='idle'||this.state==='error')return;
       const run=restarts;
-      const r=new Recognition();this.recognition=r;r.lang='es-AR';r.interimResults=true;r.continuous=true;
+      const r=new Recognition();this.recognition=r;r.lang=this.env.navigator?.language||'es-AR';r.interimResults=true;r.continuous=true;
       let fatal=false;
       r.onresult=event=>{
         if(token!==this.generation)return;
@@ -101,7 +102,7 @@ class LindenVoice {
         fatal=true;
         this.onSpeechStatus(event.error==='not-allowed'||event.error==='service-not-allowed'?'Microphone is on. Browser transcription is blocked; you can still test your voice or type.':'Microphone is on. Transcription is unavailable; the voice effect still responds to you.');
       };
-      r.onend=()=>{if(token===this.generation&&!fatal&&restarts++<3)this.later(launch,400);};
+      r.onend=()=>{if(token===this.generation&&!fatal&&this.state!=='idle'&&this.state!=='error'&&restarts++<40)this.later(launch,250);};
       try{r.start();}catch{fatal=true;this.onSpeechStatus('Microphone is on. Transcription could not start; you can type instead.');}
     };launch();
   }

@@ -27,6 +27,8 @@
   let finishTimer;
   let lastSound = 0;
   let lastText = 0;
+  let listenStarted = 0;
+  let heardVoice = false;
   let responseTimer;
   let wordTimer;
   let responseUtterance;
@@ -430,11 +432,22 @@
   }
 
   function checkSilence() {
-    if (phase !== 'listening' || !draft.text.trim()) return;
+    if (phase !== 'listening') return;
     const now = performance.now();
-    if (DictationDraft.shouldAutoFinish({hasText:true, sinceText:now-lastText, sinceSound:now-lastSound})) {
-      if (mode === 'live') sendMessage({fromLive:true});
-      else stopCapture('ready', 'Ready to send. You can edit it or tap the arrow.');
+    if (draft.text.trim()) {
+      if (DictationDraft.shouldAutoFinish({hasText:true, sinceText:now-lastText, sinceSound:now-lastSound})) {
+        if (mode === 'live') sendMessage({fromLive:true});
+        else stopCapture('ready', 'Ready to send. You can edit it or tap the arrow.');
+        return;
+      }
+    } else if (mode === 'live' && heardVoice && now - lastSound > 1600 && now - listenStarted > 2800) {
+      heardVoice = false;
+      voice.stop();
+      const generation = ++responseGeneration;
+      setPhase('thinking');
+      const avatarOrigin = $('.conversation-avatar').getBoundingClientRect();
+      const {bubble} = addMessage('assistant', '', {typing:true, origin:avatarOrigin});
+      responseTimer = setTimeout(() => revealReply(bubble, 'I heard you, but this browser could not turn your voice into text. You can type it, or tap the mic and try again.', generation), 700);
       return;
     }
     finishTimer = setTimeout(checkSilence, 250);
@@ -443,7 +456,14 @@
   const voice = new LindenVoice({
     onState(next, message) {
       if (next === 'requesting') setPhase('requesting', 'Allow microphone access to begin.');
-      else if (next === 'listening') { lastSound = performance.now(); setPhase('listening'); }
+      else if (next === 'listening') {
+        lastSound = performance.now();
+        listenStarted = lastSound;
+        heardVoice = false;
+        setPhase('listening');
+        clearFinish();
+        finishTimer = setTimeout(checkSilence, 250);
+      }
       else if (next === 'error') {
         clearFinish(); draft.seal(); setPhase('error', message);
         $('.conversation-open-tab').hidden = !/browser tab|embedded/.test(message);
@@ -473,7 +493,7 @@
       screen.style.setProperty('--light-shift-c', `${(-25 * amount).toFixed(1)}px`);
       const now = performance.now();
       if (amount > .42 && now - lastHaptic > 700) { navigator.vibrate?.(6); lastHaptic = now; }
-      if (level > .12) lastSound = now;
+      if (level > .12) { lastSound = now; heardVoice = true; }
     },
     onText(text, final, meta) {
       if (!text.trim() || screen.hidden || liveMuted || mode === 'compose') return;
@@ -486,7 +506,8 @@
     },
     onSpeechStatus(message) {
       if (phase !== 'listening' || !message) return;
-      if (!isLive()) feedback.textContent = message;
+      if (isLive()) liveStatus.textContent = message;
+      else feedback.textContent = message;
     }
   });
 
