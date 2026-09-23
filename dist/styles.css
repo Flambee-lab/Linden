@@ -134,7 +134,7 @@ dialog h1{font-size:18px;margin:0 0 12px}dialog p{font-size:14px;line-height:1.5
 .avatar-orb,.avatar-orb-shadow,.avatar-orb-ring{position:absolute;display:block;pointer-events:none}
 .avatar-orb{z-index:1;left:0;top:0;width:100%;height:auto;aspect-ratio:1}
 .avatar-orb-shadow{z-index:0;left:6%;top:22%;width:89%;height:auto;aspect-ratio:1}
-.avatar-orb-ring{z-index:2;left:0;top:0;width:100%;aspect-ratio:1}
+.avatar-orb-ring{z-index:3;left:0;top:0;width:100%;aspect-ratio:1}
 .avatar-orb-ring::before{content:"";position:absolute;left:19.44%;top:19.44%;width:61.12%;height:61.12%;border-radius:50%;box-shadow:0 0 0 1px rgba(255,255,255,.85)}
 .feed-screen button:focus-visible,.avatar-open:focus-visible{outline:2px solid #00211a;outline-offset:2px}
 .onboarding-screen{position:absolute;inset:0;color:#15392d;overflow:hidden;background:radial-gradient(circle at 108% 13%,#d5b2aa73 0%,#d7c7bc2e 25%,transparent 48%),radial-gradient(circle at -12% 92%,#6fae9970 0%,#7db3c63b 33%,transparent 59%),linear-gradient(165deg,#fbfaf9 0%,#f1f7f4 58%,#f8f3f1 100%)}
