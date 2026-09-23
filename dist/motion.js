@@ -179,7 +179,7 @@
     phone.append(dot);dot.addEventListener('animationend',()=>dot.remove(),{once:true});
   }));
   const specs=[
-    ['.first-card,.card-art,.category-icon,.see-arrow,.see-more,.card-more',[2,3,4,5],360],
+    ['.first-card,.card-art,.see-arrow,.see-more,.card-more',[2,3,4,5],360],
     ['.audio-card,.audio-photo,.audio-play,.waveform,.captions-button',[6,7],510],
     ['.video-card,.video-photo,.video-play,.link-button',[8,9],650]
   ];

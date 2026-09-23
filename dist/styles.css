@@ -102,9 +102,8 @@ dialog h1{font-size:18px;margin:0 0 12px}dialog p{font-size:14px;line-height:1.5
 .glass-card{background:#ffffff33;border:.879121px solid #ffffff0d;border-radius:21.098902px;backdrop-filter:blur(.86953px);-webkit-backdrop-filter:blur(.86953px);box-shadow:inset 1px 1.3px .6px #ffffffea,inset -1px -1.2px .7px #ffffffed;overflow:hidden}
 .first-card{left:21.0989017px;top:286.5934143px;width:295.8021851px;height:145.0622711px}
 .card-top{position:absolute;left:1.758242px;top:1.758242px;width:290.527466px;height:77.36264px;background:#ffffffb3;border-radius:19.34066px 19.34066px 3.516484px 3.516484px}
-.card-category{position:absolute;left:1.758242px;top:81.758242px;width:290.527466px;height:28.54945px;background:#00000014;border-radius:3.516484px}
+.card-category{position:absolute;left:1.758242px;top:83.758242px;width:290.527466px;height:24.54945px;background:#00000014;border-radius:3.516484px}
 .card-art{left:23.736328px;top:289.230774px;width:78px;height:78px}
-.category-icon{left:29.01123px;top:374.714294px;width:18px;height:18px}
 .hit{background:none;border:0;padding:0;cursor:pointer;z-index:3}
 .see-more{left:48px;top:400px;width:99px;height:29px}
 .see-arrow{left:112.901367px;top:409.443237px;width:11px;height:11px}

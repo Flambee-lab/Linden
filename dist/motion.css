@@ -56,9 +56,11 @@ button:active{scale:.94}
 .bar-coral{filter:blur(7px);opacity:.5;scale:1.16 1.38}
 .phone[data-voice="listening"] .bar-coral,.phone[data-voice="speaking"] .bar-coral{animation:bar-flow 2s ease-in-out infinite alternate}
 .phone[data-voice="listening"] .bar-yellow,.phone[data-voice="speaking"] .bar-yellow{animation:bar-flow 1.7s ease-in-out infinite alternate-reverse}
-.feed-avatar-button .orb-rim{transform-box:fill-box;transform-origin:center;animation:orb-sheen-sweep 8s ease-in-out infinite}
-.feed-avatar-button .orb-highlight-move{transform-box:view-box;transform-origin:48.9111px 48.9111px;animation:orb-white-drift 8s ease-in-out infinite}
-.feed-avatar-button .orb-logo{transform-box:view-box;transform-origin:48.9111px 48.9111px;animation:orb-logo-turn 8.2s ease-in-out infinite}
+.avatar-orb .orb-rim,.live-avatar .orb-rim{transform-box:fill-box;transform-origin:center;animation:orb-sheen-sweep 8s ease-in-out infinite}
+.avatar-orb .orb-highlight-move,.avatar-orb .orb-logo{transform-box:view-box;transform-origin:center}
+.live-avatar .orb-highlight-move,.live-avatar .orb-logo{transform-box:view-box;transform-origin:50% 44.9%}
+.avatar-orb .orb-highlight-move,.live-avatar .orb-highlight-move{animation:orb-white-drift 8s ease-in-out infinite}
+.avatar-orb .orb-logo,.live-avatar .orb-logo{animation:orb-logo-turn 8.2s ease-in-out infinite}
 .feed-avatar-button.is-arriving .orb-rim,.feed-avatar-button.is-arriving .orb-highlight-move,.feed-avatar-button.is-arriving .orb-logo{animation:none}
 .feed-avatar-button .avatar-orb{view-transition-name:linden-avatar}
 .assistant-screen:not([hidden]) .avatar{view-transition-name:linden-avatar}
